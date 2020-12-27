@@ -10,7 +10,7 @@ const Profile = () => {
             <div>
                 pos
                 <div>
-                    mypos
+                    my pos
                 </div>
                 <div>
                     <div>
