@@ -1,0 +1,44 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+.dialogsItem{
+
+}
+.dialogsItem .item {
+    padding: 10px;
+    text-decoration: none;
+
+}
+
+.dialogsItem .active {
+    color: cadetblue;
+
+}
+
+.dialogsItem img {
+    width: 50px;
+    border-radius: 45px;
+}
+
+.messages {
+    padding: 10px;
+    background-color: cadetblue;
+}
+
+.messages .message {
+    color: wheat;
+    background-color: brown;
+    padding-left: 1000px;
+}
+.messages .my {
+    color: wheat;
+    background-color: brown;
+    padding-left: 1000px;
+    padding-left: 1000px;
+}
+.messages .message .notmy {
+    padding-right: 100px;
+    color: wheat;
+    background-color: brown;
+}
