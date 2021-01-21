@@ -21,7 +21,8 @@ const App = (props) => {
 
 
                     <Route path = '/dialogs' render={ () => <Dialogs dialogsData = {props.appstate.messagePage.dialogsData} messageData = {props.appstate.messagePage.messageData}/>}/>
-                    <Route path = '/profile' render={ () => <Profile posts = {props.appstate.profilePage.messagePost}/>}/>
+                    <Route path = '/profile' render={ () => <Profile posts = {props.appstate.profilePage.messagePost} dispatch = {props.dispatch}  new = {props.appstate.profilePage.newPostText}/>}/>
+
                     <Route path = '/news' render={ () => <News/>}/>
                     <Route path = '/contact' render={ () => <Contact/>}/>
 

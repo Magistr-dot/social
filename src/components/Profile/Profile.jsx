@@ -9,9 +9,9 @@ const Profile = (props) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts = {props.posts}/>
+            <MyPosts posts = {props.posts}  newPostText = {props.new} dispatch = {props.dispatch}/>
         </div>
-    );
+    )
 
 
 }
