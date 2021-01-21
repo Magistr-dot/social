@@ -11,7 +11,6 @@ import Friend from "./components/Friend/Friend";
 
 const App = (props) => {
 
-
     return (
         <div className='app-wrapper'>
             <BrowserRouter>
@@ -27,7 +26,8 @@ const App = (props) => {
                     <Route path = '/contact' render={ () => <Contact/>}/>
 
                 </div>
-                <Friend friends = {props.appstate.friendPage.friends}/>
+
+                <Friend friends1 = {props.appstate.friendPage}/>
             </BrowserRouter>
         </div>
 );

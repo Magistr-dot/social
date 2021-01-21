@@ -3,9 +3,8 @@ import Fr from "./Fr/Fr";
 import React from "react";
 
 const Friend = (props) => {
-
     let postFriends =
-        props.friends.map(p => <Fr id={p.id} name={p.nav}/>)
+        props.friends1.friends.map(p => <Fr id={p.id} name={p.name}/>)
     return (
             <div className={`${s.item}`}>
                 {postFriends}

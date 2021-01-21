@@ -6,7 +6,6 @@ import {addMessageAction, updateMessageAction} from "../../redux/message-reducer
 
 
 const Dialogs = (props) => {
-
     let state = props.store.getState().messagePage
 
     let newPost = React.createRef()

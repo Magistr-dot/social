@@ -1,5 +1,7 @@
+/*
 import profileReducer from "./profile-reducer";
 import messageReducer from "./message-reducer";
+import friendReducer from "./friend-reducer";
 
 
 
@@ -45,8 +47,9 @@ let store = {
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.messagePage = messageReducer(this._state.messagePage, action)
+        this._state.friendReducer = friendReducer(this._state.friendPage, action)
         this._callSubscriber(this._state)
-       /* switch (action.type) {
+       /!* switch (action.type) {
             case ADD_POST:
                 let newPost = {url: '5', message: this._state.profilePage.newPostText, like: '42'};
                 this._state.profilePage.messagePost.push(newPost);
@@ -67,12 +70,12 @@ let store = {
                 this._state.messagePage.newMessageText = action.newMessage;
                 this._callSubscriber(this._state)
                 break;
-        }*/
+        }*!/
 
-        /*            let newMessage1 = this._state.messagePage.newMessageText;
+        /!*            let newMessage1 = this._state.messagePage.newMessageText;
                     this._state.messagePage.newMessageText = '';
                     this._state.messagePage.messageData.push({url: '6', message: newMessage, own: "yes"})
-                    this._callSubscriber(this._state)*/
+                    this._callSubscriber(this._state)*!/
         }
 
 
@@ -85,4 +88,4 @@ let store = {
 
 export default store
 
-window.state = store
+window.state = store*/
