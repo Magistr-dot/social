@@ -9,17 +9,13 @@ import {addPostAction, updatePostAction} from "../../../redux/profile-reducer";
 const MyPosts = (props) => {
     let newPost = React.createRef()
 
-    let addPost = () => {
-
-        props.dispatch(addPostAction())
-
+    let onAddPost = () => {
+       props.onAddPost();
     }
 
     let onPostChange = () => {
         let text = newPost.current.value;
-        let newVar = updatePostAction(text);
-        props.dispatch(newVar);
-
+        props.updateNewPostText(text)
     }
     let postsElements =
         props.posts.map(p => <Post message={p.message} url={p.url} like={p.like}/>)
@@ -33,7 +29,7 @@ const MyPosts = (props) => {
             </div>
 
             <div>
-                <button onClick={ addPost }>Add post</button>
+                <button onClick={ onAddPost }>Add post</button>
             </div>
             <div className={s.posts}>
                 {postsElements}
