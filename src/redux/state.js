@@ -10,7 +10,7 @@ let store = {
             messagePost: [{url: '1', message: 'hi', like: '4'},
                 {url: '2', message: 'pivet', like: '1'},
                 {url: '3', message: 'gogogo', like: '2'}],
-            newPostText: 'ffff'
+            newPostText: 'fwwwfff'
         },
         messagePage: {
             messageData: [{url: '1', message: '1111', own: "no"},
@@ -19,7 +19,7 @@ let store = {
             dialogsData: [{url: 'dialogs/1', name: 'Sasa122', ava: ""},
                 {url: 'dialogs/2', name: 'Sasa2', ava: ''},
                 {url: 'dialogs/3', name: 'Sasa3', ava: ''}],
-            newMessageText: 'Message'
+            newMessageText: 'fwwwfff'
         },
         friendPage: {
             friends: [{id: '1', name: 'Sveta'},
@@ -51,17 +51,23 @@ let store = {
         } else if (action.type === UPDATE_NEW_POST) {
             this._state.profilePage.newPostText = action.newText;
             this._callSubscriber(this._state)
+        }else if (action.type === ADD_MESSAGE) {
+            let newMessage = {url: '6', message: this._state.messagePage.newMessageText, own: "yes"};
+            this._state.messagePage.messageData.push(newMessage);
+            this._state.messagePage.newMessageText = '';
+            this._callSubscriber(this._state)
         } else if (action.type === UPDATE_NEW_MESSAGE) {
             this._state.messagePage.newMessageText = action.newMessage;
             this._callSubscriber(this._state)
-        } else if (action.type === ADD_MESSAGE) {
-            let newMessage = this._state.messagePage.newMessageText;
-            this._state.messagePage.newMessageText = '';
-            this._state.messagePage.messageData.push({url: '6', message: newMessage, own: "yes"})
-            this._callSubscriber(this._state)
         }
 
-    }
+/*            let newMessage1 = this._state.messagePage.newMessageText;
+            this._state.messagePage.newMessageText = '';
+            this._state.messagePage.messageData.push({url: '6', message: newMessage, own: "yes"})
+            this._callSubscriber(this._state)*/
+        }
+
+
 
 }
 
@@ -71,7 +77,7 @@ export const updatePostAction = (text) =>
 
 export const addMessageAction = () => ({type: ADD_MESSAGE})
 export const updateMessageAction = (text) =>
-    ({type: UPDATE_NEW_MESSAGE, newText:text})
+    ({type: UPDATE_NEW_MESSAGE, newMessage:text})
 
 
 

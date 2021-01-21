@@ -7,8 +7,10 @@ import {addMessageAction, updateMessageAction} from "../../redux/state";
 
 const Dialogs = (props) => {
 
+    let state = props.store.getState().messagePage
+
     let newPost = React.createRef()
-    let newMessageBody = props.state.messageData.newMessageText
+    let newMessageBody = state.newMessageText
 
     let onNewMessageChange = (e) => {
         let body = e.target.value;
@@ -17,14 +19,12 @@ const Dialogs = (props) => {
 
     let addPost = () => {
         props.store.dispatch(addMessageAction())
-        let text = newPost.current.value
-        alert(text)
     }
 
     let dialogsElements =
-        props.dialogsData.map(dialog => <DialogItem name={dialog.name} url={dialog.url} ava={dialog.ava}/>);
+        state.dialogsData.map(dialog => <DialogItem name={dialog.name} url={dialog.url} ava={dialog.ava}/>);
 
-    let messagesElements = props.messageData
+    let messagesElements = state.messageData
         .map(message => <Message text={message.message} url={message.url}/>)
 
     return (

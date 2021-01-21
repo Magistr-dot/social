@@ -29,7 +29,7 @@ const MyPosts = (props) => {
             <h3>post</h3>
 
             <div>
-                <textarea onChange={onPostChange} ref = {newPost} value={props.newPostText}/>
+                <textarea value={props.newPostText} onChange={onPostChange} ref = {newPost}/>
             </div>
 
             <div>
