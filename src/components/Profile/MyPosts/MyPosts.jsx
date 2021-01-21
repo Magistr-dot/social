@@ -2,7 +2,7 @@ import s from './MyPosts.module.css'
 
 import Post from "./Post/Post";
 import React from "react";
-import {addPostAction, updatePostAction} from "../../../redux/state";
+import {addPostAction, updatePostAction} from "../../../redux/profile-reducer";
 
 
 
