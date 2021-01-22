@@ -18,14 +18,14 @@ const MyPosts = (props) => {
         props.updateNewPostText(text)
     }
     let postsElements =
-        props.posts.map(p => <Post message={p.message} url={p.url} like={p.like}/>)
+        props.posts.messagePost.map(p => <Post message={p.message} url={p.url} like={p.like}/>)
 
     return (
         <div className={s.postB}>
             <h3>post</h3>
 
             <div>
-                <textarea value={props.newPostText} onChange={onPostChange} ref = {newPost}/>
+                <textarea value={props.posts.newPostText} onChange={onPostChange} ref = {newPost}/>
             </div>
 
             <div>

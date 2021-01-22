@@ -4,15 +4,17 @@ import {addPostAction, updatePostAction} from "../../../redux/profile-reducer";
 
 
 const MyPostsContainer = (props) => {
+    let state = props.store.getState();
+
     let addPost = () => {
-        props.dispatch(addPostAction())
+        props.store.dispatch(addPostAction())
     }
     let onPostChange = (text) => {
         let newVar = updatePostAction(text);
-        props.dispatch(newVar);
+        props.store.dispatch(newVar);
     }
     return (
-        <MyPosts updateNewPostText={onPostChange} onAddPost={addPost} posts = {props.post}/>
+        <MyPosts updateNewPostText={onPostChange} onAddPost={addPost} posts = {state.profilePage} newPostText={state.profilePage}/>
     );
-}
+};
 export default MyPostsContainer
