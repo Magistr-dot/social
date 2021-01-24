@@ -3,27 +3,35 @@ const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 
 let initialState = {
 
-        messageData: [{url: '1', message: '1111', own: "no"},
-            {url: '2', message: '2222', own: "yes"},
-            {url: '3', message: '3333', own: "no"}],
-        dialogsData: [{url: 'dialogs/1', name: 'Sasa122', ava: ""},
-            {url: 'dialogs/2', name: 'Sasa2', ava: ''},
-            {url: 'dialogs/3', name: 'Sasa3', ava: ''}],
-        newMessageText: 'fwwwfff'
+    messageData: [{url: '1', message: '1111', own: "no"},
+        {url: '2', message: '2222', own: "yes"},
+        {url: '3', message: '3333', own: "no"}],
+    dialogsData: [{url: 'dialogs/1', name: 'Sasa122', ava: ""},
+        {url: 'dialogs/2', name: 'Sasa2', ava: ''},
+        {url: 'dialogs/3', name: 'Sasa3', ava: ''}],
+    newMessageText: 'NewPost'
 
 }
 
 const messageReducer = (state = initialState, action) => {
+
+
+
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {url: '6', message: state.newMessageText, own: "yes"};
-            state.messageData.push(newMessage);
-            state.newMessageText = '';
+            return {
+                ...state,
+                newMessageText: '',
+                messageData: [...state.messageData, newMessage]
+            };
 
-            return state;
         case UPDATE_NEW_MESSAGE:
-            state.newMessageText = action.newMessage;
-            return state;
+            return {
+                ...state,
+                newMessageText: action.newMessage
+            };
+
         default:
             return state;
     }
@@ -31,7 +39,7 @@ const messageReducer = (state = initialState, action) => {
 
 export const addMessageAction = () => ({type: ADD_MESSAGE})
 export const updateMessageAction = (text) =>
-    ({type: UPDATE_NEW_MESSAGE, newMessage:text})
+    ({type: UPDATE_NEW_MESSAGE, newMessage: text})
 
 
 export default messageReducer;

@@ -3,24 +3,26 @@ const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
 
 let initialState = {
 
-        messagePost: [{url: '1', message: 'hi', like: '4'},
-            {url: '2', message: 'pivet', like: '1'},
-            {url: '3', message: 'gogogo', like: '2'}],
-        newPostText: 'fwwwhhfff'
+    messagePost: [{url: '1', message: 'hi', like: '4'},
+        {url: '2', message: 'privet', like: '1'},
+        {url: '3', message: 'go', like: '2'}],
+    newPostText: 'NewMessage'
 }
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {url: '5', message: state.newPostText, like: '42'};
-            state.messagePost.push(newPost);
-            state.newPostText = '';
-
-            return state;
+            return {
+                ...state,
+                newPostText: '',
+                messagePost: [...state.messagePost, newPost]
+            }
         case UPDATE_NEW_POST:
-            state.newPostText = action.newText;
-
-            return state;
+            return {
+                ...state,
+                newPostText: action.newText
+            }
         default:
             return state;
 
@@ -29,5 +31,5 @@ const profileReducer = (state = initialState, action) => {
 }
 export const addPostAction = () => ({type: ADD_POST})
 export const updatePostAction = (text) =>
-    ({type: UPDATE_NEW_POST, newText:text})
+    ({type: UPDATE_NEW_POST, newText: text})
 export default profileReducer;

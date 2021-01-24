@@ -6,18 +6,19 @@ import {addMessageAction, updateMessageAction} from "../../redux/message-reducer
 
 
 const Dialogs = (props) => {
-    let state = props.store.getState().messagePage
 
+    let state = props.messagePage
+debugger
     let newPost = React.createRef()
     let newMessageBody = state.newMessageText
 
     let onNewMessageChange = (e) => {
         let body = e.target.value;
-        props.store.dispatch(updateMessageAction(body))
+        props.updateNewDialogs(body)
     }
 
     let addPost = () => {
-        props.store.dispatch(addMessageAction())
+        props.addPost()
     }
 
     let dialogsElements =
