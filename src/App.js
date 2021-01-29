@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import News from "./components/News/News";
 import Contact from "./components/Contact/Contact";
-import {BrowserRouter, Route} from "react-router-dom"
+import {Route} from "react-router-dom"
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 
