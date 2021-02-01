@@ -27,6 +27,7 @@ const usersReducer = (state = initialState, action) => {
                     return u
                 })
             }
+
         case UNFOLLOW:
             return {
                 ...state,
@@ -52,6 +53,7 @@ const usersReducer = (state = initialState, action) => {
         default:
             return state;
     }
+    debugger
 }
 
 export const follow = (userId) => ({type: FOLLOW, userId})
