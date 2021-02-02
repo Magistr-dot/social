@@ -36,34 +36,14 @@ let Users = (props) => {
                     </div>
                     <div>
                         {u.followed
-                            ? <button disabled={props.following.some(id=>id === u.id)} onClick={() => {
-                                props.toggleFollowing(true, u.id)
-                                userAPI.unfollow(u.id).then(data => {
-
-                                    if (data.resultCode === 0) {
-
-                                        props.unfollow(u.id)
-                                        props.toggleFollowing(false, u.id)
-                                    }
-                                })
+                            ? <button disabled={props.following.some(id => id === u.id)} onClick={() => {
+                                props.unfollowThunk(u.id)
 
 
                             }}>Unfollow</button>
-                            : <button disabled={props.following.some(id=>id === u.id)} onClick={() => {
-                                props.toggleFollowing(true, u.id)
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                    withCredentials: true,
-                                    headers: {"API-KEY":"0d84092c-4446-4824-9d15-19d371343980"}
+                            : <button disabled={props.following.some(id => id === u.id)} onClick={() => {
 
-                                }).then(response => {
-
-                                    if (response.data.resultCode === 0) {
-
-                                        props.follow(u.id)
-                                        props.toggleFollowing(false, u.id)
-                                    }
-                                })
-
+                                props.followThunk(u.id)
 
                             }}>Follow</button>}
 

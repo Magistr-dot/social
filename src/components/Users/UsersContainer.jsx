@@ -1,12 +1,12 @@
 import {connect} from "react-redux";
 
 import {
-    follow,
+    follow, followThunk, getUsersThunkCreator,
     setFetchingAC,
     setPageAC,
     setTotalCountAC,
     setUsersAC, toggleFollowing,
-    unfollowAction
+    unfollowAction, unfollowThunk
 } from "../../redux/users-reducer";
 import React from "react";
 import * as axios from "axios";
@@ -18,24 +18,11 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
 
-        this.props.nowIsFetching(true)
-
-        userAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.nowIsFetching(false)
-            this.props.setUsers(data.items);
-            this.props.setTotalCount(data.totalCount)
-
-        })
+        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.setPage(pageNumber);
-        this.props.nowIsFetching(true)
-        userAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.nowIsFetching(false)
-            this.props.setUsers(data.items);
-        })
-
+        this.props.getUsersThunkCreator(pageNumber,this.props.pageSize)
     }
 
     render() {
@@ -50,7 +37,9 @@ class UsersContainer extends React.Component {
                    unfollow={this.props.unfollow}
                    toggleFollowing={this.props.toggleFollowing}
                    following = {this.props.following}
-                   users={this.props.users}/>
+                   users={this.props.users}
+                   followThunk = {this.props.followThunk}
+                   unfollowThunk = {this.props.unfollowThunk}/>
         </>
 
     }
@@ -92,9 +81,9 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     follow,
     unfollow: unfollowAction,
-    setUsers: setUsersAC,
     setPage: setPageAC,
-    setTotalCount:setTotalCountAC,
-    nowIsFetching:setFetchingAC,
-    toggleFollowing
+    toggleFollowing,
+    getUsersThunkCreator,
+    followThunk,
+    unfollowThunk
 })(UsersContainer);

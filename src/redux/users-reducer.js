@@ -1,3 +1,5 @@
+import {userAPI} from "../API/api";
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
@@ -73,5 +75,46 @@ export const setPageAC = (currentPage) => ({type: SET_CURRENT, currentPage})
 export const setTotalCountAC = (totalCount) => ({type: SET_TOTAL, totalCount})
 export const setFetchingAC = (isFetching) => ({type: TOGGLE_FETCHING, isFetching})
 export const toggleFollowing = (isFetching, userId) => ({type: TOGGLE_FOLLOWING, isFetching, userId})
+
+export const getUsersThunkCreator = (currentPage, pageSize) =>  {
+    return (dispatch) => {
+        dispatch(setFetchingAC(true))
+
+        userAPI.getUsers (currentPage, pageSize).then(data => {
+            dispatch(setFetchingAC(false))
+            dispatch(setUsersAC(data.items))
+            dispatch(setTotalCountAC(data.totalCount))
+
+        })
+    }
+}
+export const unfollowThunk = (id) =>  {
+    return (dispatch) => {
+        dispatch(toggleFollowing(true, id))
+
+        userAPI.unfollow(id).then(data => {
+
+            if (data.resultCode === 0) {
+
+                dispatch(unfollowAction(id))
+                dispatch(toggleFollowing(false, id))
+            }
+        })
+    }
+}
+export const followThunk = (id) =>  {
+    return (dispatch) => {
+        dispatch(toggleFollowing(true, id))
+
+        userAPI.follow(id).then(data => {
+
+            if (data.resultCode === 0) {
+
+                dispatch(follow(id))
+                dispatch(toggleFollowing(false, id))
+            }
+        })
+    }
+}
 
 export default usersReducer;
