@@ -14,7 +14,7 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
-    following: [2, 3]
+    following: []
 
 }
 

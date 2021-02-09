@@ -1,3 +1,6 @@
 .descriptionB {
     padding: 10px;
 }
+.descriptionB img {
+    width: 100px;
+}
